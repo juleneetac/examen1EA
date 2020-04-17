@@ -1,0 +1,23 @@
+<h1>Aquí puedes añadir un stuent a una subject</h1>
+
+<form name="formulario"  (ngSubmit)= "addtosubj(selstu, selsub)">
+  <p>
+  <label >Asignaturas: </label>
+  <select name="listasubjects" [(ngModel)]="selsub">
+      <option *ngFor="let subject of subjects" [value]="subject._id" >
+        {{subject.name}}
+      </option>
+    </select>
+    <label> Cuya Id es: {{selsub}}</label>
+  </p>
+  <p>
+    <label >Estuciantes: </label>
+    <select name="listastudents" [(ngModel)]="selstu">
+      <option *ngFor="let student of students" [value]="student._id">
+        {{student.name}}
+      </option>
+    </select>
+    <label> Cuya Id es: {{selstu}}</label>
+  </p>
+  <button  type="submit" >Add to subject</button>
+</form>

@@ -1,0 +1,38 @@
+<h1>Lista de Subjects</h1>
+<div>
+  
+    <mat-list>
+      <button (click)="getSubjects()">Mostrar subjects</button>
+        <mat-list-item *ngFor="let subject of subjects">
+          <button (click)="getStudentfrom(subject._id)">{{subject.name}}</button>
+        </mat-list-item>
+      </mat-list>
+    <mat-list>
+
+      <h1>Lista de estudiantes de la asignatura seleccionada</h1>
+      <mat-list-item *ngFor="let student of students">
+        <button (click)="getStudent(student._id)">{{student.name}}</button>
+      </mat-list-item>
+    </mat-list>
+
+    <div *ngIf="detailstudent">
+      <h3>Información sobre: {{detailstudent.name}}</h3>
+          <p>Calle: {{detailstudent.address}}</p>
+          
+      <mat-list>
+        <h5>Phones:</h5>
+        <mat-list-item *ngFor="let phone of detailstudent.phones">
+            <p>#Home: {{phone.home}}</p>
+            <p>#Work: {{phone.work}}</p>
+        </mat-list-item>
+      </mat-list>
+      
+      <mat-list>
+        <h5>Carreras que cursa:</h5>
+        <mat-list-item *ngFor="let study of detailstudent.studies">
+          {{study}}
+        </mat-list-item>
+      </mat-list>
+  </div>
+    
+</div>

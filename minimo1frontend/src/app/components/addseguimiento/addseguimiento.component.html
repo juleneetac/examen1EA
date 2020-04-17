@@ -1,0 +1,137 @@
+<div class="container">
+    <h1>Registrarse</h1>
+    
+    <form [formGroup]="segForm" (ngSubmit)="addSeg($event)">
+      <p>
+        <label>
+          Nombre:
+          <input formControlName="nombre" type="text" name="username" placeholder="Nombre" value="Pep" required>
+        </label>
+      </p>
+      <p>
+        <label>
+          Indique fecha:
+          <input formControlName="fecha" type="text" name="fecha" placeholder="dd/mm/yyyy" [(ngModel)]="fecha">
+          <a *ngIf="segForm.controls['fecha'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.fecha" >
+              <div *ngIf="segForm.get('fecha').hasError(validation.type) && (segForm.get('fecha').dirty || segForm.get('fecha').touched)">
+                <div class="danger">
+                   {{validation.message}}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+      <p>
+        <label>
+          DNI:
+          <input formControlName="DNI" type="text" name="DNI" placeholder="DNI" value="999999999R" required>
+        </label>
+      </p>
+      <p>
+        <label>
+          Telefono:
+          <input formControlName="telefono" type="text" name="telefono" placeholder="telefono" value="234234234" required>
+        </label>
+      </p>
+
+      <p>
+        <label>
+          ¿ Tiene fiebre ?:
+          <input formControlName="fiebre" type="text" name="fiebre" placeholder="'s' para si, 'n' para no" [(ngModel)]="fiebre">
+          <a *ngIf="segForm.controls['fiebre'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.fiebre" >
+              <div *ngIf="segForm.get('fiebre').hasError(validation.type) && (segForm.get('fiebre').dirty || segForm.get('fiebre').touched)">
+                <div class="danger">
+                   {{validation.message}}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+
+      <p>
+        <label>
+          ¿ Tiene tos ?:
+          <input formControlName="tos" type="text" name="tos" placeholder="'s' para si, 'n' para no" [(ngModel)]="tos">
+          <a *ngIf="segForm.controls['tos'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.tos" >
+              <div *ngIf="segForm.get('tos').hasError(validation.type) && (segForm.get('tos').dirty || segForm.get('tos').touched)">
+                <div class="danger">
+                   {{validation.message}}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+
+      <p>
+        <label>
+          ¿ Tiene dificultad para respirar ?:
+          <input formControlName="dificultad" type="text" name="dificultad" placeholder="'s' para si, 'n' para no" [(ngModel)]="dificultad">
+          <a *ngIf="segForm.controls['dificultad'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.dificultad" >
+              <div *ngIf="segForm.get('dificultad').hasError(validation.type) && (segForm.get('dificultad').dirty || segForm.get('dificultad').touched)">
+                <div class="danger">
+                   {{validation.message}}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+
+      <p>
+        <label>
+          ¿ Tiene malestar general ?:
+          <input formControlName="malestar" type="text" name="malestar" placeholder="'s' para si, 'n' para no" [(ngModel)]="malestar">
+          <a *ngIf="segForm.controls['malestar'].valid">
+            <a class="success"> &#9989;</a>
+          </a>
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.malestar" >
+              <div *ngIf="segForm.get('malestar').hasError(validation.type) && (segForm.get('malestar').dirty || segForm.get('malestar').touched)">
+                <div class="danger">
+                   {{validation.message}}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </label>
+      </p>
+     
+      <div>
+      <button size="large" shape="round" type="submit" [disabled]="segForm.invalid" expand="block" >Añadir seguimiento</button>
+      </div>
+      </form>
+</div>
+
+<h1>Historial de seguimientos</h1>
+<mat-list>
+  <button (click)="getCasos()">Mostrar historial</button>
+    <mat-list-item *ngFor="let caso of casos">
+      <div> {{caso.nombre}}// </div>
+      <div> {{caso.fecha}}// </div>
+      <div>DNI: {{caso.DNI}}// </div>
+      <div>fiebre: {{caso.fiebre}}// </div>
+      <div>tos: {{caso.tos}}// </div>
+      <div>dificultad: {{caso.dificultad}}// </div>
+      <div>malestar: {{caso.malestar}}// </div>
+    </mat-list-item>
+  </mat-list>
+<mat-list>

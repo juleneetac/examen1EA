@@ -1,0 +1,40 @@
+<div class="container">
+    <h1>Añadir student</h1>
+    
+    <form (ngSubmit)="addStu($event)">
+        <p>
+            <label>
+              Nuevo name:
+              <input type="text" name="name" placeholder="Username" [(ngModel)]="name">
+            </label>
+          </p>
+          <p>
+            <label>
+              Nueva address:
+              <input type="text" name="address" placeholder="Address" [(ngModel)]="address">
+            </label>
+          </p>
+          <p>
+            <label>
+              Nuevo home phone:
+              <input type="text" name="home" placeholder="Phone Home" [(ngModel)]="home">
+            </label>
+          </p>
+          <p>
+            <label>
+                Nuevo work phone:
+              <input type="text" name="work" placeholder="Phone Work" [(ngModel)]="work">
+            </label>
+          </p>
+          <p>
+            <label>
+              Nuevo studies:
+              <input type="text" name="studies" placeholder="Carrerar que cursas" [(ngModel)]="studies">
+            </label>
+          </p>
+      <button size="large" shape="round" type="submit" >Add Student</button>
+      </form>
+</div>
+
+
+
